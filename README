@@ -1,36 +1,13 @@
 
-This script produces version numbers from a git repository
-It's easy to work into any build process, call the script, it produces a version number
+This script produces version numbers from a git repository. It's easy to work into any build process, call the script from within a directory with a git repository, and it produces a version number.
 
 The format: [closest git tag].[closest git changeset].[auto increment build number]
-The portions of the build number that aren't needed are dropped. For example if the current tag and changeset are the same,
-The changeset portion and the build number portion won't be included. If you're working on a new changeset, obviously we won't
-know the SHA1 before you commit it, so in the meantime the version number will be in the format:
-[closest git tag].[last git changeset].dirty.[auto increment build number]
 
-The auto build number increments when there are dirty files in the repository
-It is a count of how many builds you've done since your last commit.
-Only the developer will see the build number. It resets every time you commit or switch commits.
-The version number should be the same for every changeset, unless you remove tags at some point.
+The portions of the build number that aren't needed are dropped. For example if the current tag and changeset are the same, the changeset portion and the build number portion won't be included. 
+If you're working on a new changeset, obviously we won't know the SHA1 before you commit it, so in the meantime the version number will be in the format: [closest git tag].[last git changeset].dirty.[auto increment build number]
 
-The best way to use this is manually control the major and minor number with git tags 
-For example set your tag to 1.2. By default only annotated tags are used.
-Don't forget to push tags if you want consistent version numbers.
+The auto build number increments when there are dirty files in the repository it is a count of how many builds you've done since your last commit. Only the developer will see the build number. It resets every time you commit or switch commits.  The version number should be the same for every changeset, unless you remove tags at some point.
 
+The best way to use this is manually control the major and minor number with git tags. For example set your tag to "1.2". By default only annotated tags are used. Don't forget to push tags if you want consistent version numbers.
 
-
-Copyright 2013 Sano Intelligence, Inc.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
+Apache 2.0 Licence: see the LICENCE file
