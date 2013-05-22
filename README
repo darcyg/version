@@ -11,4 +11,8 @@ The auto build number increments when there are dirty files in the repository it
 
 The best way to use this is manually control the major and minor number with git tags. For example set your tag to "1.2". By default only annotated tags are used. Don't forget to push tags if you want consistent version numbers.
 
+The script tracks the build number in a file named: .version.build.info which is stored in the root of your repository. You should add it to your .gitignore.
+
+
+
 Apache 2.0 Licence: see the LICENCE file
