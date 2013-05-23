@@ -100,7 +100,18 @@ def makeVersionNumber():
  
     return(versionNumber)
 
+def c(args):
+    c_str = '#include "version.h"\n'
+    c_str += 'const struct __version_info_t __version_info = {"' + makeVersionNumber() + '"};\n'
+    print(c_str)
+
 def main():
-    print(makeVersionNumber())
+    if len(sys.argv) > 1:
+        try:
+            globals()[sys.argv[1]](sys.argv[2:])
+        except KeyError:
+            print(makeVersionNumber())
+    else:
+        print(makeVersionNumber())
 
 main()
