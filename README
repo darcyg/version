@@ -1,7 +1,13 @@
 
 This script produces version numbers from a git repository. It's easy to work into any build process, call the script from within a directory with a git repository, and it produces a version number.
 
-The format: [closest git tag].[last git changeset].dirty.[auto increment build number]
+The format: [project name].[closest git tag].[last git changeset].dirty.[auto increment build number]
+
+The usage: version.py [project name] [file language]
+
+All options are optional
+
+If you provide a file language (currently only c is supported), the script will output a c file with the version number in it, that uses a struct defined in version.h.
 
 The portions of the build number that aren't needed are dropped. For example if the current tag and changeset are the same, the changeset portion and the build number portion won't be included. 
 
