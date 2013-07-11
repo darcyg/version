@@ -20,6 +20,8 @@ import pickle
 import subprocess
 from subprocess import check_output
 
+projectName = ""
+
 def gitDirty():
     output = check_output('git status -s'.split())
     return(output != "")
@@ -75,6 +77,8 @@ def makeAutoBuildNumber():
 
 def makeVersionNumber():
 
+    global projectName
+
     isDirty = gitDirty()
 
     try:
@@ -98,6 +102,9 @@ def makeVersionNumber():
         versionNumber += '.dirty'
         versionNumber += "." + makeAutoBuildNumber()
  
+    if len(projectName) > 0:
+        versionNumber = projectName + "." + versionNumber
+
     return(versionNumber)
 
 def c(args):
@@ -106,11 +113,21 @@ def c(args):
     print(c_str)
 
 def main():
+    global projectName;
+
     if len(sys.argv) > 1:
-        try:
+        if sys.argv[1] in globals():
             globals()[sys.argv[1]](sys.argv[2:])
-        except KeyError:
-            print(makeVersionNumber())
+        else:
+            projectName = sys.argv[1]
+
+            if len(sys.argv) > 2:
+                if sys.argv[2] in globals():
+                    globals()[sys.argv[2]](sys.argv[3:])
+                else:
+                    print(makeVersionNumber())
+            else:
+                print(makeVersionNumber())
     else:
         print(makeVersionNumber())
 
